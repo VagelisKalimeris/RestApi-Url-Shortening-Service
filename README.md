@@ -10,11 +10,11 @@ Run server and visit [this page][swagger].
 
 
 ## Design
-Short url consists of service url plus postfix. Users can choose their own postfix, which is verified to be unused. In
-case they do not select a custom postfix, the service generates a random and unused one. 
+Short url consists of service url plus postfix. Users can choose their own postfix, which is then verified to be unused. 
+In case they do not select a custom postfix, the service generates a random and unused one. 
 
-User retrieval is currently offered instead of redirection. Results get cached upon retrieval, so subsequent retrievals
-do not put load on database, as long as cached results do not get evicted.
+Url retrieval by user is currently offered instead of redirection. Results get cached upon retrieval, so subsequent retrievals
+do not put load on  the database, as long as cached results do not get evicted.
 
 
-[swagger]: [http://127.0.0.1:80/docs]
+[swagger]: http://127.0.0.1:80/docs
