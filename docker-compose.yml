@@ -8,9 +8,13 @@ services:
       - '80:80'
 
   redis-container:
-    image: 'redis'
+    image: redis:latest
+    container_name: redis
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
     ports:
-      - '6379:6379'
+      - "6379:6379"
 
   postgres-container:
     image: postgres:14.1-alpine
