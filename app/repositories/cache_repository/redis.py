@@ -1,10 +1,16 @@
-import redis
+from os import environ
 
+import redis
+from dotenv import load_dotenv
+
+
+load_dotenv()
+redis_password = environ['REDIS_PASSWORD']
 
 def create_redis():
     return redis.ConnectionPool(
         host='redis-container',
-        password='hAuv4XoVWDX1zZB',
+        password=redis_password,
         port=6379,
         db=0,
         decode_responses=False

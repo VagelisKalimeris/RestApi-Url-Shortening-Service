@@ -10,3 +10,4 @@ fastapi-middleware-logger~=0.0.5
 redis>=0
 SQLAlchemy>=0
 psycopg2>=0
+python-dotenv>=0
