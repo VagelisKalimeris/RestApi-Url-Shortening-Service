@@ -4,7 +4,7 @@ from app.config import POSTFIX_LENGTH
 
 
 def gen_rand_key(key_len: int = POSTFIX_LENGTH) -> str:
-    """Generates a new key consisting of given length random integers."""
+    """Generates a new key consisting of given length random chars."""
     char_selection = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
     new_key = ''
