@@ -47,20 +47,20 @@ class RetrieveOpDetails:
 
 class ShortenOpResult(BaseModel):
     """
-    Shortening service POST response template subclass.
+    Shortening service POST response template.
     """
-    message: str
-    user_id: int
-    shortened_url: str
-    expiration: date
+    message: str = Field(json_schema_extra={'example': 'Redirection URL created successfully!'})
+    user_id: int = Field(json_schema_extra={'example': 555})
+    shortened_url: str = Field(json_schema_extra={'example': 'https://shrinkurl.com/47xes'})
+    expiration: date = Field(json_schema_extra={'example': '2024-12-31'})
 
 
 class RetrieveOpResult(BaseModel):
     """
-    Shortening service response GET template subclass.
+    Shortening service GET response template.
     """
-    message: str
-    user_id: int
-    original_url: str
-    expiration: date
-    cached_result: bool
+    message: str = Field(json_schema_extra={'example': 'Original URL retrieved successfully!'})
+    user_id: int = Field(json_schema_extra={'example': 555})
+    original_url: str = Field(json_schema_extra={'example': 'https://www.example.com/original-url'})
+    expiration: date = Field(json_schema_extra={'example': '2024-12-31'})
+    cached_result: bool = Field(json_schema_extra={'example': False})
