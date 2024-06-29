@@ -1,6 +1,3 @@
-from app.models.repository_data_transfer_objs import ServerStats
-
-
 class StatusResult:
     """
     Api status response template.

@@ -30,7 +30,6 @@ def shorten_url(op_details: ShortenOpDetails, cache: Redis = Depends(get_redis),
     )
 
 
-
 @router.get('/retrieve-url', status_code=200, response_class=PrettyJSONResponse)
 def retrieve_url(user_id: int, short_url: str, cache: Redis = Depends(get_redis),
                  db: Session = Depends(get_postgres)) -> RetrieveOpResult:
@@ -51,4 +50,3 @@ def retrieve_url(user_id: int, short_url: str, cache: Redis = Depends(get_redis)
         expiration=url_retrieval_res.expiration,
         cached_result=url_retrieval_res.cached_result
     )
-

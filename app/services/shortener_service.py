@@ -33,7 +33,8 @@ def shorten_url_logic(user_id: int, original_url: str, postfix: str, expiration:
             existing_entry = ShortenerDataAccess.retrieve_url_pair(postfix, cache, db)
 
     # Add storage entry
-    if isinstance(url_pair := ShortenerDataAccess.persist_url_pair(user_id, original_url, postfix, expiration, db), Error):
+    if isinstance(url_pair := ShortenerDataAccess.persist_url_pair(user_id, original_url, postfix, expiration, db),
+                  Error):
         return url_pair
 
     # Construct short URL
