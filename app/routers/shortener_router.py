@@ -4,7 +4,8 @@ from sqlalchemy.orm import Session
 
 from app.services.shortener_service import shorten_url_logic, retrieve_url_logic
 from app.routers.router_dependencies import get_redis, get_postgres
-from app.models.route.shortener_route_models import ShortenOpDetails, ShortenOpResult, RetrieveOpResult, RetrieveOpDetails
+from app.models.route.shortener_route_models import ShortenOpDetails, ShortenOpResult, RetrieveOpResult, \
+    RetrieveOpDetails
 from app.models.shared.shared_models import PrettyJSONResponse, Error
 
 
