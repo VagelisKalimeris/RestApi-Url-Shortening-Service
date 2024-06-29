@@ -4,7 +4,7 @@ from urllib.parse import urlsplit
 from pydantic import BaseModel, Field, model_validator
 
 from app.config import POSTFIX_LENGTH, SERVICE_BASE_URL
-from app.models.shared_models import Error
+from app.models.shared.shared_models import Error
 
 
 class ShortenOpDetails(BaseModel):

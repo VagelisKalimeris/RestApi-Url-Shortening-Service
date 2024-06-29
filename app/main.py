@@ -9,7 +9,7 @@ from fastapi.openapi.utils import get_openapi
 from fastapi_middleware_logger.fastapi_middleware_logger import add_custom_logger
 
 from app.repositories.db_repository.postgres import engine
-from app.models.sqlalchemy_models import Base
+from app.models.data.sqlalchemy_models import Base
 from app.routers import utility_router, shortener_router
 from app.routers.utility_router import lifespan
 

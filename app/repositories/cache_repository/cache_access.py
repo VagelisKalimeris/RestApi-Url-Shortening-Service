@@ -2,8 +2,8 @@ import pickle
 
 from redis import Redis, RedisError
 
-from app.models.repository_data_transfer_objs import UrlEntry
-from app.models.shared_models import Error
+from app.models.dto.repository_data_transfer_objs import UrlEntry
+from app.models.shared.shared_models import Error
 
 
 def retrieve_cache_url_pair(postfix: str, cache: Redis) -> UrlEntry | Error:

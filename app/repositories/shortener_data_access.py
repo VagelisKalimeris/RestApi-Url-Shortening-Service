@@ -3,10 +3,10 @@ from datetime import date
 from redis import Redis
 from sqlalchemy.orm import Session
 
-from app.models.repository_data_transfer_objs import UrlEntry, ServerStats
+from app.models.dto.repository_data_transfer_objs import UrlEntry, ServerStats
 from app.repositories.cache_repository.cache_access import retrieve_cache_url_pair, persist_cache_url_pair
 from app.repositories.db_repository.db_access import retrieve_db_url_pair, persist_db_url_pair
-from app.models.shared_models import Error
+from app.models.shared.shared_models import Error
 
 
 class ShortenerDataAccess:
