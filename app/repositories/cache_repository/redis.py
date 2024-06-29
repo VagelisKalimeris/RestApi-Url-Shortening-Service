@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 redis_password = environ['REDIS_PASSWORD']
 
+
 def create_redis():
     return redis.ConnectionPool(
         host='redis-container',

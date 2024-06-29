@@ -45,31 +45,22 @@ class RetrieveOpDetails:
         return postfix
 
 
-class OpResult:
-    """
-    Shortening service response template base class.
-    """
-    def __init__(self, message: str, user_id: int) -> None:
-        self.message = message
-        self.user_id = user_id
-
-
-class ShortenOpResult(OpResult):
+class ShortenOpResult(BaseModel):
     """
     Shortening service POST response template subclass.
     """
-    def __init__(self, message: str, user_id: int, shortened_url: str, expiration: date) -> None:
-        super().__init__(message, user_id)
-        self.shortened_url = shortened_url
-        self.expiration = expiration
+    message: str
+    user_id: int
+    shortened_url: str
+    expiration: date
 
 
-class RetrieveOpResult(OpResult):
+class RetrieveOpResult(BaseModel):
     """
     Shortening service response GET template subclass.
     """
-    def __init__(self, message: str, user_id: int, original_url: str, expiration: date, cached_result: bool) -> None:
-        super().__init__(message, user_id)
-        self.original_url = original_url
-        self.expiration = expiration
-        self.cached_result = cached_result
+    message: str
+    user_id: int
+    original_url: str
+    expiration: date
+    cached_result: bool
