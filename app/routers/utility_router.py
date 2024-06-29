@@ -23,18 +23,23 @@ async def lifespan(app: FastAPI) -> None:
 
 
 @router.get('/status', status_code=200, response_class=PrettyJSONResponse)
-def api_status() -> dict:
+def api_status() -> StatusResult:
     """
     Utility route for testing api functionality.
     """
-    return StatusResult('URL Shortening Service is up and running!').__dict__
+    return StatusResult(
+        message='URL Shortening Service is up and running!'
+    )
 
 
 @router.get('/server_statistics', status_code=200, response_class=PrettyJSONResponse)
-def server_stats() -> dict:
+def server_stats() -> ServerStatsResult:
     """
     Utility route, returns API usage information.
     """
     server_statistics = retrieve_server_statistics()
 
-    return ServerStatsResult('Server statistics retrieved successfully!', server_statistics.__dict__).__dict__
+    return ServerStatsResult(
+        message='Server statistics retrieved successfully!',
+        statistics=server_statistics.__dict__
+    )
