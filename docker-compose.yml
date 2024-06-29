@@ -1,5 +1,5 @@
 services:
-  api-container:
+  shortener-api-container:
     build: .
     ports:
       - '80:80'

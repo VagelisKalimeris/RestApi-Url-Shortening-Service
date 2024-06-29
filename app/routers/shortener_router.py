@@ -13,7 +13,7 @@ router = APIRouter()
 
 @router.post('/shorten-url', status_code=201, response_class=PrettyJSONResponse)
 def shorten_url(op_details: ShortenOpDetails, cache: Redis = Depends(get_redis),
-                db: Session = Depends(get_postgres)) -> dict:
+                db: Session = Depends(get_postgres)) -> ShortenOpResult:
     """
     Shortens given link. Adds db entry. Returns shortened link.
     """
@@ -22,15 +22,18 @@ def shorten_url(op_details: ShortenOpDetails, cache: Redis = Depends(get_redis),
                                                        op_details.postfix, op_details.expiration, cache, db), Error):
         raise HTTPException(status_code=url_shorten_res.status, detail=url_shorten_res.message)
 
-    shorten_url_result = ShortenOpResult('Redirection URL created successfully!', op_details.user_id,
-                                         url_shorten_res.short_url, op_details.expiration)
+    return ShortenOpResult(
+        message='Redirection URL created successfully!',
+        user_id=op_details.user_id,
+        shortened_url=url_shorten_res.short_url,
+        expiration=op_details.expiration
+    )
 
-    return shorten_url_result.__dict__
 
 
 @router.get('/retrieve-url', status_code=200, response_class=PrettyJSONResponse)
 def retrieve_url(user_id: int, short_url: str, cache: Redis = Depends(get_redis),
-                 db: Session = Depends(get_postgres)) -> dict:
+                 db: Session = Depends(get_postgres)) -> RetrieveOpResult:
     """
     Retrieves original URL entry, from given short URL.
     """
@@ -41,8 +44,11 @@ def retrieve_url(user_id: int, short_url: str, cache: Redis = Depends(get_redis)
     if isinstance(url_retrieval_res := retrieve_url_logic(user_id, postfix, cache, db), Error):
         raise HTTPException(status_code=url_retrieval_res.status, detail=url_retrieval_res.message)
 
-    shorten_op_result = RetrieveOpResult('Original URL retrieved successfully!', user_id,
-                                         url_retrieval_res.original_url, url_retrieval_res.expiration,
-                                         url_retrieval_res.cached_result)
+    return RetrieveOpResult(
+        message='Original URL retrieved successfully!',
+        user_id=user_id,
+        original_url=url_retrieval_res.original_url,
+        expiration=url_retrieval_res.expiration,
+        cached_result=url_retrieval_res.cached_result
+    )
 
-    return shorten_op_result.__dict__
