@@ -3,9 +3,9 @@ from datetime import date
 from sqlalchemy import exc
 from sqlalchemy.orm import Session
 
-from app.models.repository_data_transfer_objs import UrlEntry
-from app.models.sqlalchemy_models import Url
-from app.models.shared_models import Error
+from app.models.dto.repository_data_transfer_objs import UrlEntry
+from app.models.data.sqlalchemy_models import Url
+from app.models.shared.shared_models import Error
 
 
 def retrieve_db_url_pair(postfix: str, db: Session) -> UrlEntry | Error:

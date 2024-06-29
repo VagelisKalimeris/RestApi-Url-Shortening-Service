@@ -4,10 +4,10 @@ from redis import Redis
 from sqlalchemy.orm import Session
 
 from app.config import SERVICE_BASE_URL
-from app.models.repository_data_transfer_objs import ServerStats
-from app.models.service_data_transfer_objs import ShortUrlResult, OriginalUrlResult
+from app.models.dto.repository_data_transfer_objs import ServerStats
+from app.models.dto.service_data_transfer_objs import ShortUrlResult, OriginalUrlResult
 from app.services.helpers.random_key_gen import gen_rand_key
-from app.models.shared_models import Error
+from app.models.shared.shared_models import Error
 from app.repositories.shortener_data_access import ShortenerDataAccess
 
 

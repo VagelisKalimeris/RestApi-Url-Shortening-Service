@@ -3,8 +3,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, APIRouter
 
-from app.models.shared_models import PrettyJSONResponse
-from app.models.utility_route_models import StatusResult, ServerStatsResult
+from app.models.shared.shared_models import PrettyJSONResponse
+from app.models.route.utility_route_models import StatusResult, ServerStatsResult
 from app.services.shortener_service import retrieve_server_statistics
 
 router = APIRouter()
